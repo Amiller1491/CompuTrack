@@ -1,0 +1,15 @@
+﻿<Window
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" mc:Ignorable="d" x:Class="CompuTrackWPF.UserWindow"
+        Title="UserWindow" Height="200" Width="300"
+		WindowStyle="None" ResizeMode="NoResize" BorderBrush="black" Background="#FFFBECA5"
+        WindowStartupLocation="CenterOwner" ShowInTaskbar="False" BorderThickness="1">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="190*" />
+            <ColumnDefinition Width="86*" />
+        </Grid.ColumnDefinitions>
+        <Frame Content="Frame" Source="UserLoginPage.xaml" HorizontalAlignment="Left" NavigationUIVisibility="Hidden" Width="276" Grid.ColumnSpan="2" />
+    </Grid>
+</Window>

@@ -1,0 +1,67 @@
+﻿<Page x:Class="CompuTrackWPF.InventoryMain"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:c="clr-namespace:CompuTrackWPF"
+      xmlns:s="clr-namespace:System.Collections;assembly=mscorlib"
+      xmlns:p="clr-namespace:System;assembly=mscorlib"
+      mc:Ignorable="d"
+      d:DesignHeight="300" d:DesignWidth="300" KeyDown="Page_KeyDown"     
+	Title="InventoryMain" Height="500" Width="785" DataContext="{Binding}">
+    <Page.Resources>
+        <c:InventoryData x:Key="DataList"></c:InventoryData>
+        <c:ItemCategoryData x:Key="CategoryList"></c:ItemCategoryData>
+    </Page.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="109*" />
+            <RowDefinition Height="391*" />
+        </Grid.RowDefinitions>
+        <Rectangle Height="416" HorizontalAlignment="Left" Margin="395,54,0,0" Name="naughtyBlock" Stroke="Black" VerticalAlignment="Top" Width="352" Fill="#FFFFE773" Visibility="Hidden" Grid.RowSpan="2" />
+        <Button Content="Add New Item" Height="23" HorizontalAlignment="Left" Margin="680,12,0,0" Name="newItemBtn" VerticalAlignment="Top" Width="93" Click="newItemBtn_Click" TabIndex="3" />
+        <c:SortableListView KeyDown="inventoryListView_KeyDown" GridViewColumnHeader.Click="InventoryHeaderClicked"  HorizontalAlignment="Left" Margin="12,54,0,30" x:Name="inventoryListView" Width="360" ItemsSource="{Binding Source={StaticResource DataList}}" IsSynchronizedWithCurrentItem="{x:Null}" SelectionChanged="inventoryListView_SelectionChanged" SelectionMode="Single" d:LayoutOverrides="HorizontalAlignment, GridBox" Foreground="#FF020202" BorderBrush="{StaticResource {x:Static SystemColors.ActiveCaptionTextBrushKey}}" Grid.RowSpan="2" TabIndex="4" Padding="0">       
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn DisplayMemberBinding="{Binding Path=ItemCategory}" Header="Type" Width="150" />
+                    <GridViewColumn DisplayMemberBinding="{Binding Path=ItemMake}" Header="Make" Width="150" HeaderTemplate="{Binding}" />
+                    <GridViewColumn DisplayMemberBinding="{Binding Path=ItemCount}" Header="Quantity" Width="60" HeaderStringFormat="{Binding}"  />
+                </GridView>            
+             </ListView.View>
+        </c:SortableListView>
+        <c:NumberTextBox TextChanged="editing_TextChanged" KeyDown="editing_KeyDown" Height="22" Margin="0,0,134,137" x:Name="countTextBox" VerticalAlignment="Bottom" BorderBrush="Black" MaxLength="3" Width="35" Grid.Row="1" TabIndex="11" HorizontalAlignment="Right" />
+        <Button Content="&gt;" Height="23" HorizontalAlignment="Right" Margin="0,0,111,136" Name="countIncreaseBtn" VerticalAlignment="Bottom" Width="21" Click="countIncreaseBtn_Click" Grid.Row="1" />
+        <Button Content="Save" Height="23" HorizontalAlignment="Left" Margin="585,0,0,72" Name="saveButton" VerticalAlignment="Bottom" Width="84" Click="saveButton_Click" d:LayoutOverrides="VerticalAlignment" Grid.Row="1" TabIndex="13" />
+        <Button Content="Delete" Height="23" HorizontalAlignment="Left" Margin="485,296,0,0" Name="deleteButton" VerticalAlignment="Top" Width="75" Click="deleteButton_Click" Grid.Row="1" TabIndex="12" />
+        <ComboBox SelectedIndex="0" Height="23" HorizontalAlignment="Left" Margin="12,25,0,0" Name="filterbyType" VerticalAlignment="Top" Width="108" SelectionChanged="typeFilter_SelectionChanged" ItemsSource="{Binding Source={StaticResource CategoryList}}" DisplayMemberPath="FilterString" DataContext="{Binding}" BorderBrush="Black" TabIndex="1"></ComboBox>
+        <Label Content="Filter by type:" Height="26" HorizontalAlignment="Left" Margin="12,3,0,0" Name="label1" VerticalAlignment="Top" Width="103" />
+        <Button Content="&lt;" Height="23" HorizontalAlignment="Right" Margin="0,0,171,136" Name="countDecreaseBtn" VerticalAlignment="Bottom" Width="21" Click="countDecreaseBtn_Click" Grid.Row="1" />
+        <TextBox TextChanged="editing_TextChanged" KeyDown="editing_KeyDown" Height="55" HorizontalAlignment="Left" Margin="433,126,0,0" Name="descriptionTextBox" VerticalAlignment="Top" Width="130" BorderBrush="Black" TextWrapping="Wrap" Grid.Row="1" TabIndex="8" MaxLength="50" />
+        <c:ClickSelectTextBox Height="23" HorizontalAlignment="Left" Margin="150,25,0,0" x:Name="searchInventoryBox" VerticalAlignment="Top" Width="132" Text="Search inventory..." TextChanged="searchInventoryBox_TextChanged" BorderBrush="Black" TabIndex="2" MaxLength="30" />
+        <ComboBox KeyDown="itemCategoryBox_KeyDown"  DisplayMemberPath="CategoryString" Height="23" HorizontalAlignment="Left" ItemsSource="{Binding Source={StaticResource CategoryList}}" Margin="433,107,0,0" Name="itemCategoryBox" SelectedIndex="-1" VerticalAlignment="Top" Width="130" SelectionChanged="itemCategoryBox_SelectionChanged" Grid.RowSpan="2" TabIndex="5" />
+        <Label Content="Type:" Height="26" HorizontalAlignment="Left" Margin="433,83,0,0" Name="label2" VerticalAlignment="Top" Width="103" />
+        <TextBox KeyDown="editing_KeyDown" Height="23" HorizontalAlignment="Right" Margin="0,107,67,0" Name="newCategoryBox" VerticalAlignment="Top" Width="130" BorderBrush="Black" Visibility="Hidden" Grid.RowSpan="2" MaxLength="25"/>
+        <Label Content="Make:" Height="26" HorizontalAlignment="Left" Margin="433,36,0,0" Name="label3" VerticalAlignment="Top" Width="103" Grid.Row="1" />
+        <TextBox TextChanged="editing_TextChanged" KeyDown="editing_KeyDown" Height="23" HorizontalAlignment="Left" Margin="433,59,0,0" Name="makeBox" VerticalAlignment="Top" Width="130" BorderBrush="Black" Grid.Row="1" TabIndex="6" MaxLength="25" />
+        <Label Content="Description:" Height="26" HorizontalAlignment="Left" Margin="433,104,0,0" Name="label4" VerticalAlignment="Top" Width="103" Grid.Row="1" />
+        <Label Content="Select an item to view details" HorizontalAlignment="Left" Margin="394,31,0,48" Name="itemLabel" Width="167" />
+        <TextBox TextChanged="editing_TextChanged" KeyDown="editing_KeyDown" Height="23" HorizontalAlignment="Left" Margin="588,59,0,0" Name="modelBox" VerticalAlignment="Top" Width="130" BorderBrush="Black" Grid.Row="1" TabIndex="7" MaxLength="25" />
+        <Label Content="Model:" Height="26" HorizontalAlignment="Right" Margin="0,36,94,0" Name="label5" VerticalAlignment="Top" Width="103" Grid.Row="1" />
+        <Label Content="Quantity:" Height="26" HorizontalAlignment="Left" Margin="605,208,0,0" Name="label6" VerticalAlignment="Top" Width="103" Grid.Row="1" />
+        <c:ClickSelectTextBox TextChanged="editing_TextChanged" KeyDown="editing_KeyDown" Height="55" HorizontalAlignment="Left" Margin="588,126,0,0" x:Name="reasonBox" VerticalAlignment="Top" Width="130" BorderBrush="Black" Text="Insert any log comments here..." TextWrapping="Wrap" Grid.Row="1" TabIndex="9" MaxLength="75" />
+        <Label Content="Reason:" Height="26" HorizontalAlignment="Left" Margin="588,104,0,0" Name="label7" VerticalAlignment="Top" Width="103" Grid.Row="1" />
+        <Label Content="Threshold:" Height="26" HorizontalAlignment="Left" Margin="470,208,0,0" Name="label8" VerticalAlignment="Top" Width="103" Grid.Row="1" />
+        <c:NumberTextBox TextChanged="editing_TextChanged" KeyDown="editing_KeyDown" Height="22" HorizontalAlignment="Left" Margin="488,232,0,0" x:Name="thresholdBox" VerticalAlignment="Top" Width="35" BorderBrush="Black" MaxLength="3" Grid.Row="1" TabIndex="10" />
+        <Button Content="&lt;" Height="23" HorizontalAlignment="Left" Margin="465,0,0,136" Name="thresholdDecreaseBtn" VerticalAlignment="Bottom" Width="21" Click="thresholdDecreaseBtn_Click" Grid.Row="1" />
+        <Button Content="&gt;" Height="23" HorizontalAlignment="Right" Margin="0,0,239,136" Name="thresholdIncreaseBtn" VerticalAlignment="Bottom" Width="21" Click="thresholdIncreaseBtn_Click" Grid.Row="1" />
+        <Label Grid.Row="1" Height="28" HorizontalAlignment="Center" Margin="394,262,38,0" Name="errorLabel" VerticalAlignment="Top" Foreground="Red" Width="353" HorizontalContentAlignment="Center" />
+        <Image Margin="130,27,638,65" Source="Search-icon.png">
+            <Image.OpacityMask>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="Black" Offset="0" />
+                    <GradientStop Color="White" Offset="1" />
+                </LinearGradientBrush>
+            </Image.OpacityMask>
+        </Image>
+    </Grid>        
+</Page>

@@ -1,0 +1,37 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<configuration>
+    <configSections>
+        <sectionGroup name="userSettings" type="System.Configuration.UserSettingsGroup, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" >
+            <section name="CompuTrackWPF.Properties.Settings" type="System.Configuration.ClientSettingsSection, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" allowExeDefinition="MachineToLocalUser" requirePermission="false" />
+        </sectionGroup>
+    </configSections>
+    <connectionStrings>
+        <add name="ramdbConnectionString" connectionString="Data Source=147.174.76.32,443;Initial Catalog=ramdb;Persist Security Info=True;User ID=anthony;Password=masql"
+            providerName="System.Data.SqlClient" />
+        <add name="CompuTrackWPF.Properties.Settings.ramdbConnectionString"
+            connectionString="Data Source=147.174.76.32,443;Initial Catalog=ramdb;Persist Security Info=True;User ID=anthony;Password=masql"
+            providerName="System.Data.SqlClient" />
+    </connectionStrings>
+    <userSettings>
+        <CompuTrackWPF.Properties.Settings>
+            <setting name="Company_Email" serializeAs="String">
+                <value>computrackTest@gmail.com</value>
+            </setting>
+            <setting name="smtp" serializeAs="String">
+                <value>smtp.gmail.com</value>
+            </setting>
+            <setting name="port" serializeAs="String">
+                <value>587</value>
+            </setting>
+            <setting name="SSL_Value" serializeAs="String">
+                <value>True</value>
+            </setting>
+            <setting name="Password" serializeAs="String">
+                <value>computrack</value>
+            </setting>
+            <setting name="Owner_Email" serializeAs="String">
+                <value />
+            </setting>
+        </CompuTrackWPF.Properties.Settings>
+    </userSettings>
+</configuration>

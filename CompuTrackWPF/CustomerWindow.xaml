@@ -1,0 +1,85 @@
+﻿<Window xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation" x:Class="CompuTrackWPF.CustomerWindow"
+        Title="CustomerWindow" Height="300" Width="450"
+        mc:Ignorable="d"
+        WindowStyle="None" ResizeMode="NoResize" BorderBrush="black" x:Name="customerWindow" Background="#FFFFE773"
+        WindowStartupLocation="CenterOwner" ShowInTaskbar="False" BorderThickness="1">
+    <Grid>
+        <Label Content="First Name" Height="28" HorizontalAlignment="Left" Margin="12,33,0,0" x:Name="label1" VerticalAlignment="Top" FontWeight="Bold" />
+        <TextBox PreviewTextInput="OnlyLetterInput" Height="23" HorizontalAlignment="Left" Margin="83,33,0,0" x:Name="fnameBox" VerticalAlignment="Top" Width="120" TabIndex="1" MaxLength="20" />
+        <Label Content="Last Name" Height="28" HorizontalAlignment="Left" Margin="208,33,0,0" x:Name="label2" VerticalAlignment="Top" FontWeight="Bold" />
+        <TextBox PreviewTextInput="OnlyLetterInput" Height="23" HorizontalAlignment="Left" Margin="279.083,33,0,0" x:Name="lnameBox" VerticalAlignment="Top" Width="120" TabIndex="2" MaxLength="20" />
+        <Label Content="Address" Height="28" HorizontalAlignment="Left" Margin="12,93,0,0" x:Name="label3" VerticalAlignment="Top" FontWeight="Bold" />
+        <TextBox Height="23" HorizontalAlignment="Right" Margin="0,91,170,0" x:Name="add1Box" VerticalAlignment="Top" Width="195" TabIndex="4" MaxLength="40" />
+        <TextBox Height="23" HorizontalAlignment="Right" Margin="0,118,170,0" x:Name="add2Box" VerticalAlignment="Top" Width="195" TabIndex="5" MaxLength="40" />
+        <Label Content="Phone  1" Height="28" HorizontalAlignment="Left" Margin="12,184,0,0" x:Name="label4" VerticalAlignment="Top" FontWeight="Bold" />
+        <telerik:RadMaskedTextBox Mask="(000) 000 - 0000" Height="23" HorizontalAlignment="Left" Margin="83,184,0,0" x:Name="phone1Box" VerticalAlignment="Top" Width="120" TabIndex="9" />
+        <Label Content="Phone 2" Height="28" HorizontalAlignment="Left" Margin="221.719,184,0,0" x:Name="label5" VerticalAlignment="Top" />
+        <telerik:RadMaskedTextBox Mask="(000) 000 - 0000" PreviewTextInput="OnlyNumInput" Height="23" HorizontalAlignment="Left" Margin="279.083,184,0,0" x:Name="phone2Box" VerticalAlignment="Top" Width="120" TabIndex="10" />
+        <Label Content="E-Mail" Height="28" HorizontalAlignment="Left" Margin="12,218,0,0" x:Name="label6" VerticalAlignment="Top" />
+        <TextBox Height="23" HorizontalAlignment="Right" Margin="0,218,170,0" x:Name="emailBox" VerticalAlignment="Top" Width="195" TabIndex="11" MaxLength="30" />
+        <Label Content="City" HorizontalAlignment="Left" Margin="12,142,0,131" x:Name="label7" FontWeight="Bold" />
+        <TextBox PreviewTextInput="OnlyLetterInput" HorizontalAlignment="Left" Margin="83,0,0,124" x:Name="cityBox" Width="120" TabIndex="6" MaxLength="20" Height="23" VerticalAlignment="Bottom" d:LayoutOverrides="Height" />
+        <Label Content="State" HorizontalAlignment="Left" Margin="238.193,0,0,124.96" x:Name="label8" RenderTransformOrigin="-0.054,0.5" FontWeight="Bold" Height="24.04" VerticalAlignment="Bottom" />
+        <Label Content="Zip" HorizontalAlignment="Right" Margin="0,0,96.917,124.96" x:Name="label9" RenderTransformOrigin="0.44,0.536" FontWeight="Bold" Height="24.04" VerticalAlignment="Bottom" />
+        <telerik:RadMaskedTextBox Mask="00000" PreviewTextInput="OnlyNumInput" HorizontalAlignment="Left" Margin="349.083,0,0,124" x:Name="zipBox" Width="50" TabIndex="8" RenderTransformOrigin="0.46,0.522" Height="23" VerticalAlignment="Bottom" d:LayoutOverrides="Height" />
+        <telerik:RadButton Content="Close" Height="23" HorizontalAlignment="Left" Margin="324.083,267,0,0" x:Name="closeCustomerBtn" VerticalAlignment="Top" Width="75" TabIndex="13" Click="closeCustomerBtn_Click" />
+        <telerik:RadButton Content="Save" Height="23" HorizontalAlignment="Left" Margin="245.083,267,0,0" x:Name="saveCustomerBtn" VerticalAlignment="Top" Width="75" Click="saveOrEditBtn_Click" TabIndex="12" />
+        <Label Content="Company" Height="28" HorizontalAlignment="Left" Margin="12,63,0,0" x:Name="label3_Copy" VerticalAlignment="Top" />
+        <TextBox Height="23" HorizontalAlignment="Right" Margin="0,63,170,0" x:Name="companyBox" VerticalAlignment="Top" Width="195" TabIndex="3" MaxLength="30" />
+        <Label x:Name="messageLabel" Content="" VerticalAlignment="Bottom" Margin="12,0,8,30.04" RenderTransformOrigin="9.15,0.576" HorizontalAlignment="Center"/>
+        <telerik:RadComboBox x:Name="stateComboBox" HorizontalAlignment="Right" Width="45" Margin="0,0,123.917,124.96" MaxDropDownHeight="180" TabIndex="7" IsEditable="True" IsReadOnly="True" CanAutocompleteSelectItems="True" EmptyText="..." ClearSelectionButtonVisibility="Visible" ClearSelectionButtonContent="Clear" VerticalAlignment="Bottom">
+            <telerik:RadComboBoxItem Content="AL" />
+            <telerik:RadComboBoxItem Content="AK" />
+            <telerik:RadComboBoxItem Content="AS" />
+            <telerik:RadComboBoxItem Content="AZ" />
+            <telerik:RadComboBoxItem Content="AR" />
+            <telerik:RadComboBoxItem Content="CA" />
+            <telerik:RadComboBoxItem Content="CO" />
+            <telerik:RadComboBoxItem Content="CT" />
+            <telerik:RadComboBoxItem Content="DE" />
+            <telerik:RadComboBoxItem Content="FL" />
+            <telerik:RadComboBoxItem Content="GA" />
+            <telerik:RadComboBoxItem Content="HI" />
+            <telerik:RadComboBoxItem Content="ID" />
+            <telerik:RadComboBoxItem Content="IL" />
+            <telerik:RadComboBoxItem Content="IN" />
+            <telerik:RadComboBoxItem Content="IA" />
+            <telerik:RadComboBoxItem Content="KS" />
+            <telerik:RadComboBoxItem Content="KY" />
+            <telerik:RadComboBoxItem Content="LA" />
+            <telerik:RadComboBoxItem Content="ME" />
+            <telerik:RadComboBoxItem Content="MD" />
+            <telerik:RadComboBoxItem Content="MA" />
+            <telerik:RadComboBoxItem Content="MI" />
+            <telerik:RadComboBoxItem Content="MN" />
+            <telerik:RadComboBoxItem Content="MS" />
+            <telerik:RadComboBoxItem Content="MO" />
+            <telerik:RadComboBoxItem Content="MT" />
+            <telerik:RadComboBoxItem Content="NE" />
+            <telerik:RadComboBoxItem Content="NV" />
+            <telerik:RadComboBoxItem Content="NH" />
+            <telerik:RadComboBoxItem Content="NJ" />
+            <telerik:RadComboBoxItem Content="NM" />
+            <telerik:RadComboBoxItem Content="NY" />
+            <telerik:RadComboBoxItem Content="NC" />
+            <telerik:RadComboBoxItem Content="ND" />
+            <telerik:RadComboBoxItem Content="OH" />
+            <telerik:RadComboBoxItem Content="OK" />
+            <telerik:RadComboBoxItem Content="OR" />
+            <telerik:RadComboBoxItem Content="PA" />
+            <telerik:RadComboBoxItem Content="RI" />
+            <telerik:RadComboBoxItem Content="SC" />
+            <telerik:RadComboBoxItem Content="SD" />
+            <telerik:RadComboBoxItem Content="TN" />
+            <telerik:RadComboBoxItem Content="TX" />
+            <telerik:RadComboBoxItem Content="UT" />
+            <telerik:RadComboBoxItem Content="VT" />
+            <telerik:RadComboBoxItem Content="VA" />
+            <telerik:RadComboBoxItem Content="WA" />
+            <telerik:RadComboBoxItem Content="WV" />
+            <telerik:RadComboBoxItem Content="WI" />
+            <telerik:RadComboBoxItem Content="WY" />
+        </telerik:RadComboBox>
+        <Label x:Name="titleLabel" Content="New Customer" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="8,-4,0,0" FontWeight="Bold" FontSize="21.333"/>
+    </Grid>
+</Window>

@@ -1,0 +1,51 @@
+﻿<Window
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:local="clr-namespace:CompuTrackWPF"
+		xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation" 
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" mc:Ignorable="d" x:Class="CompuTrackWPF.ManageUsersWindow"
+        Title="ManageUsersWindow" Height="255" Width="525"
+		WindowStyle="None" ResizeMode="NoResize" BorderBrush="black" Background="#FFFFE773"
+        WindowStartupLocation="CenterOwner" ShowInTaskbar="False" BorderThickness="1">
+    <Window.Resources>
+        <local:UserData x:Key="UserList"/>
+    </Window.Resources>
+    <Grid Margin="0,0,0,-19">
+        <Canvas Margin="12,19,17,7">
+        	<local:SortableListView ButtonBase.Click="userHeaderClicked" SelectionMode="Single" x:Name="userListView" Width="165" Height="180" IsSynchronizedWithCurrentItem="{x:Null}" SelectionChanged="userSelectionChange" ItemsSource="{Binding Source={StaticResource UserList}}" Canvas.Top="16" d:LayoutOverrides="Height" Canvas.Left="-1" TabIndex="1">
+        		<ListView.View>
+        			<GridView>
+        				<GridViewColumn DisplayMemberBinding="{Binding userNameString, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Width="100" Header="User" />
+        				<GridViewColumn DisplayMemberBinding="{Binding permissionsString}" Width="50" Header="Level" />
+        			</GridView>
+        		</ListView.View>
+        	</local:SortableListView>
+        	<GroupBox x:Name="editUserGroupBox" Header="Edit User" Height="184" Canvas.Left="173" Canvas.Top="12" Width="152">
+        		<Canvas>
+        			<Label Content="Username:" VerticalAlignment="Top" Canvas.Left="-4" Canvas.Top="2"/>
+        			<TextBox x:Name="usernameBox" TextWrapping="Wrap" VerticalAlignment="Top" MaxLength="15" HorizontalAlignment="Left" Width="132" TabIndex="2" Canvas.Top="22" IsEnabled="True" />
+        			<Label Content="Password:" VerticalAlignment="Top" Canvas.Top="50" Canvas.Left="-4"/>
+        			<PasswordBox x:Name="passwordBox" HorizontalAlignment="Left" VerticalAlignment="Top" MaxLength="15" Width="132" TabIndex="3" Canvas.Top="71"/>
+        			<CheckBox x:Name="adminCheckBox" Content="Administrator" TabIndex="4" Canvas.Top="106" />
+        			<telerik:RadButton x:Name="updateButton" Content="Update" VerticalAlignment="Top" TabIndex="5" Click="updateButton_Click" Canvas.Top="139" />
+        			<telerik:RadButton x:Name="deleteUserBtn" Content="Delete User" VerticalAlignment="Top" Width="75" Click="deleteUserBtn_Click" Canvas.Left="45.617" Canvas.Top="139" TabIndex="6" />
+        		</Canvas>
+        	</GroupBox>
+        	<GroupBox x:Name="newUserGroupBox" Header="New User" Width="166.397" Height="184" Canvas.Left="333" Canvas.Top="12">
+        		<Canvas>
+        			<Label Content="Username:" VerticalAlignment="Top" Canvas.Top="-3" Canvas.Left="-4"/>
+        			<TextBox x:Name="newUsernameBox" TextWrapping="Wrap" VerticalAlignment="Top" MaxLength="15" HorizontalAlignment="Left" TabIndex="7" Canvas.Top="20.04" Width="132"/>
+        			<Label Content="Password:" VerticalAlignment="Top" Canvas.Top="37" Canvas.Left="-4"/>
+        			<PasswordBox x:Name="newPasswordBox" HorizontalAlignment="Left" VerticalAlignment="Top" MaxLength="15" TabIndex="8" Canvas.Top="58" Width="132"/>
+        			<Label Content="Re-enter:" VerticalAlignment="Top" Canvas.Top="72" Canvas.Left="-4"/>
+        			<PasswordBox x:Name="newPasswordConfirmBox" HorizontalAlignment="Left" VerticalAlignment="Top" MaxLength="15" TabIndex="9" Canvas.Top="93" Width="132"/>
+        			<CheckBox x:Name="newAdminCheckBox" Content="Make administrator" TabIndex="10" Canvas.Top="119"/>
+        			<telerik:RadButton x:Name="createUserBtn" Content="Create User" VerticalAlignment="Top" Width="75" TabIndex="11" Click="createUserBtn_Click" Canvas.Top="139" />
+        		</Canvas>
+        	</GroupBox>
+        	<telerik:RadButton x:Name="closeBtn" Content="Close" Width="75" Click="closeBtn_Click" Canvas.Left="424.397" Canvas.Top="203.723" TabIndex="12" />
+        	<Label x:Name="messageLabel" Content="" Canvas.Left="8" Canvas.Top="196"/>
+        </Canvas>
+        <Label x:Name="titleLabel" Content="Manage Users" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="9,-2,0,0" FontWeight="Bold" FontSize="21.333"/>
+    </Grid>
+</Window>

@@ -1,0 +1,31 @@
+﻿<Window
+	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation"
+	xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" mc:Ignorable="d"
+	x:Class="CompuTrackWPF.About"
+	x:Name="Window"
+	Title="About"
+    WindowStyle="None" ResizeMode="NoResize" BorderBrush="black"
+	Width="565" Height="430" Background="#FFFFE773" WindowStartupLocation="CenterOwner" ShowInTaskbar="False" BorderThickness="1">
+
+	<Grid x:Name="LayoutRoot">
+		<Label Content="Team Stealing Beauty:" Margin="8,0,0,183.89" FontSize="18.667" HorizontalAlignment="Left" FontWeight="Bold" Height="38.83" VerticalAlignment="Bottom"/>
+		<Label Content="Anthony Ma" HorizontalAlignment="Left" Margin="8,0,0,125.253" FontSize="16" VerticalAlignment="Bottom"/>
+		<Label Content="Jon Strassel" HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="8,0,0,31.413" FontSize="16"/>
+		<Label Content="James Russo" HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="8,0,0,62.693" FontSize="16"/>
+		<Label Content="Matt Borel" Margin="8,0,0,156.533" FontSize="16" HorizontalAlignment="Left" VerticalAlignment="Bottom"/>
+		<Label Content="Adam Miller" Margin="8,0,0,93.973" FontSize="16" HorizontalAlignment="Left" VerticalAlignment="Bottom"/>
+		<Label Content="Contact Info:" HorizontalAlignment="Left" Margin="338.292,0,0,183.17" FontWeight="Bold" FontSize="18.667" Height="39.55" VerticalAlignment="Bottom"/>
+		<Label Content="adam.miller@selu.edu" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="0,0,23.715,93.973" FontSize="16" d:LayoutOverrides="HorizontalAlignment"/>
+		<Label Content="jonathan.strassel@selu.edu" HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="338.292,0,0,31.413" FontSize="16"/>
+		<Label Content="anthony.ma@selu.edu" Margin="0,0,22.475,125.253" FontSize="16" HorizontalAlignment="Right" d:LayoutOverrides="HorizontalAlignment" VerticalAlignment="Bottom"/>
+		<Label Content="james.russo@selu.edu" HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="373.618,0,0,62.693" FontSize="16"/>
+		<Label Content="matthew.borel@selu.edu" Margin="353.806,240.187,0,0" FontSize="16" VerticalAlignment="Top" HorizontalAlignment="Left"/>
+		<TextBlock Text="The overall goal of Computrack was to provide
+ an easy to use ticketing &amp; inventory system." HorizontalAlignment="Left" VerticalAlignment="Top" Margin="21.006,108,0,0" FontSize="16" Height="67.28" TextWrapping="Wrap" Width="518.28" />
+		<Label Content="Purpose:" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="18.667" FontWeight="Bold" Margin="8,73.17,0,0"/>
+        <telerik:RadButton Content="Close" VerticalAlignment="Bottom" Margin="255.286,0,256.714,8" Click="Close_Click" TabIndex="1" />
+        <Image Height="45" Source="trans-logo.png" Stretch="Fill" VerticalAlignment="Top" Margin="141,22,167,0"/>
+	</Grid>
+</Window>

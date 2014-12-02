@@ -1,0 +1,52 @@
+To be finished: 
+1) 
+2) Fields to edit items in the inventoryListView
+3) Right hand side customer information on the Customers tab. May need to look at Telerik's "GridView"
+
+
+
+
+To be created (high priority): 
+1) Internal ticket editing window. This window will show notes on a ticket, what problems were found, communication log for that ticket, etc. This will be accessed from the right-side customer ticket list in the customers tab.
+2) Open/closed status for tickets
+2) E-mail alert system for inventory
+3) Filter listviews (users, customers, inventory)
+4) Preferences screen to set sqlconnection string, toggle e-mail alerts, change who e-mails are sent to for inventory alerts. Read this information from an ini file.
+5) Create about screen
+6) Add "Send e-mail alerts" to Inventory menu dropdown.
+7) Figure out how to filter listview data bindings
+8) Clicking the New Item button from the menu and adding a new item from there doesn't automatically refresh the item list. Only refreshes if clicking the button from the inventory tab.
+
+
+To be created (low priority):
+1) Some sort of logging system for inventory. When an item is deducted, somehow ask user what the item was used for and also log who made the change. Same for when items are added.
+2) Ability to delete customers if logged in as admin or higher, warn when deleting a customer if there are tickets belonging to that customer. 
+
+Small tweaks:
+4) Maybe resize userListView on manage users window
+
+
+
+
+
+
+
+
+
+Things from this list that are now complete:
+
+Small tweaks:
+1) Phone number fields in Customer Window should be limited to 10 digits and automatically insert a hyphen after the 3rd and 6th number. eg 985-123-4567
+2) Set CustomerListView, UserListView to allow only one selection at a time
+3) Buttons don't need to be Telerik buttons, change back to standard buttons and be consistant throughout the entire program.
+
+5) ETA label on ticket window is cut off, shows "ETA(days" instead of "ETA(days)"
+6) Remove print from File menu. Think of some other stuff that may need to go into the File menu. Maybe remove Tools menu and move Preferences into File menu.
+
+To be finished: 
+4) Have the save button on the new ticket window successfully save the correct customer ID number. Trim the date created label to only show the date, no time. Trim() http://www.dotnetperls.com/trim http://www.c-sharpcorner.com/UploadFile/mahesh/2886/
+
+
+
+
+

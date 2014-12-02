@@ -1,0 +1,369 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Data;
+using System.Windows.Documents;
+using System.Windows.Input;
+using System.Windows.Media;
+using System.Windows.Media.Imaging;
+using System.Windows.Shapes;
+using System.Data.SqlClient;
+using System.Text.RegularExpressions;
+
+namespace CompuTrackWPF
+{
+    /// <summary>
+    /// Interaction logic for TicketWindow.xaml
+    /// </summary>
+    public partial class TicketWindow : Window
+    {
+        string intention = "new";
+        int ticketNoToEdit;
+        
+        //James, fill out the pdf using these strings, I think they should be all that you need
+        String Company;
+        String Address;
+        String CityStateZip;
+        String PhonesFull; //this is what you want
+        String Email;
+        int currentTicketNo;
+        String DateCreated;
+        String ETA;
+        String Technician;
+        //end pdf
+
+        String currentDateCreatedBeforeFormatting;
+        String Phone1; //not needed for the pdf, used elsewhere
+        String Phone2; //not needed for the pdf, used elsewhere
+        public TicketWindow()
+        {
+            if (!(Shared.currentUser == null))
+            {
+                InitializeComponent();
+                Technician = Shared.currentUser._userName;
+            }
+            else { MessageBox.Show("Must be logged in to use this feature."); }
+        }
+
+        public TicketWindow(int ticketNo)
+        {
+            InitializeComponent();
+            this.ticketNoToEdit = ticketNo;
+            this.intention = "edit";
+            printBtn.IsEnabled = true;
+            saveBtn.Content = "Update";
+            titleLabel.Content = "Edit Ticket";
+            populateTicket(ticketNo);
+        }
+        private void saveOrEditBtn_Click(object sender, RoutedEventArgs e)
+        {
+            if (intention == "new") { newTicket(); }
+            else if (intention == "edit") { editTicket(); }
+        }
+        private void populateTicket(int ticketNo)
+        {
+            try
+            {
+                Shared.ramdbConnection.Open();
+            }
+            catch
+            {
+                lblMessage.Content = "Could not open SQL connection.";
+            }
+            SqlCommand saveTicket = new SqlCommand("SELECT C_id, ETA, Type, Accessories, Make, Model, Description, ACAdapter, AdapterBrand, Serial, Defects, Password, CreatedBy, DateCreated FROM Tickets WHERE TicketNo=" + ticketNoToEdit);
+            saveTicket.Connection = Shared.ramdbConnection;
+            try
+            {
+                SqlDataReader ticketReader = saveTicket.ExecuteReader();
+                while (ticketReader.Read())
+                {
+                    eta.Value = Convert.ToInt32(ticketReader["eta"]);
+                    typeView.Text = ticketReader["type"].ToString();
+                    make.Text = ticketReader["Make"].ToString();
+                    model.Text = ticketReader["Model"].ToString();
+                    descriptionTextBox.Text = ticketReader["Description"].ToString();
+                    if (ticketReader["ACAdapter"].ToString() == "true") { acadaptorChbx.IsChecked = true; }
+                    adapterbrandTxtbx.Text = ticketReader["AdapterBrand"].ToString();
+                    serial.Text = ticketReader["Serial"].ToString();
+                    defects.Text = ticketReader["Defects"].ToString();
+                    PasswordTxtBx.Text = ticketReader["Password"].ToString();
+                    dateCreatedlbl.Content = ticketReader["DateCreated"].ToString().Remove(9);
+                    ticketNoLbl.Content = ticketNoToEdit;
+                }
+                Shared.ramdbConnection.Close();
+            }
+            catch
+            {
+                lblMessage.Content = "Error auto-filling fields.";
+                Shared.ramdbConnection.Close();
+            }
+        }
+            
+        public void newTicket()
+        {
+            try
+            {
+                Shared.ramdbConnection.Open();
+            }
+            catch
+            {
+                lblMessage.Content = "Could not open SQL connection.";
+            }
+            SqlCommand saveTicket = new SqlCommand("INSERT into Tickets (C_id, ETA, Type, Accessories, Make, Model, Description, ACAdapter, AdapterBrand, Serial, Defects, Password, CreatedBy ) " +
+                                                   "Values (@c_id, @eta, @type, @accessories, @make, @model, @description, @acadapter, @adapterbrand, @serial, @defects, @password, @createdby ) " +
+                                                   "SELECT TicketNo, DateCreated FROM Tickets WHERE TicketNo=SCOPE_IDENTITY()" );
+            if (customerComboBox.Text == null || typeView.Text == "" || descriptionTextBox.Text == ""
+                                            || eta.ContentText == "0" || make.Text == "" || model.Text == "")
+            {
+                lblMessage.Content = "Please make sure all required fields are filled in.";
+                Shared.ramdbConnection.Close();
+            }
+            else if (acadaptorChbx.IsChecked == true && adapterbrandTxtbx.Text == "")
+            {
+                lblMessage.Content = "Adapter brand must be specified.";
+                Shared.ramdbConnection.Close();
+            }
+            else
+            {
+                saveTicket.Parameters.AddWithValue("@c_id", selectedCustomer.C_id);
+                saveTicket.Parameters.AddWithValue("@eta", eta.Value);
+                saveTicket.Parameters.AddWithValue("@type", typeView.Text);
+                saveTicket.Parameters.AddWithValue("@accessories", accessories.Text);
+                saveTicket.Parameters.AddWithValue("@make", make.Text);
+                saveTicket.Parameters.AddWithValue("@model", model.Text);
+                saveTicket.Parameters.AddWithValue("@description", descriptionTextBox.Text);
+                if (acadaptorChbx.IsChecked == true) saveTicket.Parameters.AddWithValue("@acadapter", "true");
+                else saveTicket.Parameters.AddWithValue("@acadapter", "false");
+                saveTicket.Parameters.AddWithValue("@adapterbrand", adapterbrandTxtbx.Text);
+                saveTicket.Parameters.AddWithValue("@serial", serial.Text);
+                saveTicket.Parameters.AddWithValue("@defects", defects.Text);
+                saveTicket.Parameters.AddWithValue("@password", PasswordTxtBx.Text);
+                saveTicket.Parameters.AddWithValue("@createdby", Technician);
+                saveTicket.Connection = Shared.ramdbConnection;
+                try
+                {
+                    SqlDataReader ticketReader = saveTicket.ExecuteReader();
+                    lblMessage.Content = "Ticket successfully added to database.";
+                    printBtn.IsEnabled = true;
+                    saveBtn.IsEnabled = false;
+                    while (ticketReader.Read())
+                    {
+                        currentTicketNo = Convert.ToInt32(ticketReader["TicketNo"]);
+                        ETA = eta.ContentText;
+                        currentDateCreatedBeforeFormatting = ticketReader["DateCreated"].ToString();
+                        ticketNoLbl.Content = currentTicketNo;
+                        DateCreated = currentDateCreatedBeforeFormatting.Remove(9);
+                        dateCreatedlbl.Content = DateCreated;
+                    }
+                    Shared.ramdbConnection.Close();
+                }
+                catch
+                {
+                    lblMessage.Content = "Error saving to database.";
+                    Shared.ramdbConnection.Close();
+                }
+                SqlCommand newInternalTicket = new SqlCommand("INSERT into TicketsInternal (TicketNo) Values (@ticketNo)");
+                newInternalTicket.Connection = Shared.ramdbConnection;
+                newInternalTicket.Parameters.AddWithValue("@ticketNo", currentTicketNo);
+                try
+                {
+                    Shared.ramdbConnection.Open();
+                    newInternalTicket.ExecuteNonQuery();
+                }
+                catch { MessageBox.Show("Error saving TicketsInternal row."); }
+                Shared.ramdbConnection.Close();
+                refreshCustomerListView();
+                reselectCustomer();
+
+            }
+        }
+
+        int indexOfSelectedCustomer;
+        public void refreshCustomerListView()
+        {
+            var referenceToOwner = (MainWindow)this.Owner;
+            var referenceToCustomerListView = (CustomerData)referenceToOwner.FindResource("CustomerList");
+            indexOfSelectedCustomer = Convert.ToInt32(referenceToOwner.customerListView.SelectedIndex);
+            referenceToCustomerListView.refreshListView();
+        }
+
+        public void reselectCustomer()
+        {
+            var referenceToOwner = (MainWindow)this.Owner;
+            //var referenceToCustomerListView = (CustomerData)referenceToOwner.FindResource("CustomerList"); not needed?
+            referenceToOwner.customerListView.SelectedIndex = indexOfSelectedCustomer;
+        }
+
+        public void editTicket()
+        {
+            try
+            {
+                Shared.ramdbConnection.Open();
+            }
+            catch
+            {
+                lblMessage.Content = "Could not open SQL connection.";
+            }
+            SqlCommand saveTicket = new SqlCommand("UPDATE Tickets SET C_id = @c_id, ETA = @eta, Type = @type, Accessories = @accessories, Make = @make, Model = @model, Description = @description, ACAdapter = @acadapter, Adapterbrand = @adapterbrand, Serial = @serial, Defects = @defects, Password = @password WHERE TicketNo = @ticketno");
+
+            if (customerComboBox.Text == null ||  typeView.Text == "" || descriptionTextBox.Text == ""
+                                            || eta.ContentText == "0" || make.Text == "" || model.Text == "")
+            {
+                lblMessage.Content = "Please make sure all required fields are filled in.";
+                Shared.ramdbConnection.Close();
+            }
+            else
+            {
+                saveTicket.Parameters.AddWithValue("@c_id", selectedCustomer.C_id);
+                saveTicket.Parameters.AddWithValue("@ticketno", ticketNoToEdit);
+                saveTicket.Parameters.AddWithValue("@eta", eta.Value);
+                saveTicket.Parameters.AddWithValue("@type", typeView.Text);
+                saveTicket.Parameters.AddWithValue("@accessories", accessories.Text);
+                saveTicket.Parameters.AddWithValue("@make", make.Text);
+                saveTicket.Parameters.AddWithValue("@model", model.Text);
+                saveTicket.Parameters.AddWithValue("@description", descriptionTextBox.Text);
+                if (acadaptorChbx.IsChecked == true) saveTicket.Parameters.AddWithValue("@acadapter", "true");
+                else saveTicket.Parameters.AddWithValue("@acadapter", "false");
+                saveTicket.Parameters.AddWithValue("@adapterbrand", adapterbrandTxtbx.Text);
+                saveTicket.Parameters.AddWithValue("@serial", serial.Text);
+                saveTicket.Parameters.AddWithValue("@defects", defects.Text);
+                saveTicket.Parameters.AddWithValue("@password", PasswordTxtBx.Text);
+                saveTicket.Connection = Shared.ramdbConnection;
+                try
+                {
+                    SqlDataReader ticketReader = saveTicket.ExecuteReader();
+                    lblMessage.Content = "Ticket successfully updated in database.";
+                    printBtn.IsEnabled = true;
+                    //while (ticketReader.Read())
+                    {
+                        currentTicketNo = Convert.ToInt32(ticketReader["TicketNo"]);
+                        ETA = eta.ContentText;
+                        currentDateCreatedBeforeFormatting = ticketReader["DateCreated"].ToString();
+                        ticketNoLbl.Content = currentTicketNo;
+                        DateCreated = currentDateCreatedBeforeFormatting.Remove(9);
+                        dateCreatedlbl.Content = DateCreated;
+                    }
+                    Shared.ramdbConnection.Close();
+                    refreshCustomerListView();
+                    reselectCustomer();
+                    Close();
+                }
+                catch
+                {
+                    lblMessage.Content = "Error saving to database.";
+                    Shared.ramdbConnection.Close();
+                }
+            }
+        }
+        private void cancelBtn_Click(object sender, RoutedEventArgs e)
+        {
+            Close();
+        }
+        private void printBtn_Click(object sender, RoutedEventArgs e)
+        {
+            
+            PDF_Output print = new PDF_Output();
+
+            //print.FillForm();
+
+            //Console.WriteLine("the Next line shoudl set all the values needed to print");
+            //  set_fields_for_print();
+            //Console.WriteLine("\n the values should be set");
+
+            print.setPrintSimple(model.Text, typeView.Text, accessories.Text, make.Text, descriptionTextBox.Text,
+                adapterbrandTxtbx.Text, serial.Text, defects.Text, eta.ContentText, acadaptorChbx.IsChecked, typeView.Text, customerComboBox.Text,
+                ticketNoLbl.Content.ToString(), Company, Email, PhonesFull, PasswordTxtBx.Text, customerAddressLabel.Content.ToString(),
+                customerCityStateZipLabel.Content.ToString(), dateCreatedlbl.Content.ToString());
+
+
+            print.write_stream(sender, e);
+            
+
+        }
+        private void acadaptorChbx_Checked(object sender, RoutedEventArgs e)
+        {
+            adapterbrandTxtbx.IsEnabled = true;
+        }
+
+        private void acadaptorChbx_Unchecked(object sender, RoutedEventArgs e)
+        {
+            adapterbrandTxtbx.IsEnabled = false;
+        }
+
+        private void newCustomerBtn_Click(object sender, RoutedEventArgs e)
+        {
+            CustomerWindow cw = new CustomerWindow();
+            cw.Owner = this;
+            cw.ShowDialog();
+        }
+        CustomerItem selectedCustomer;
+        private void customerListView_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (this.customerComboBox.SelectedItem != null)
+            {
+                selectedCustomer = (CustomerItem)this.customerComboBox.SelectedItem;
+                SqlCommand populateCustomerInfoCmd = new SqlCommand("SELECT * FROM Customers WHERE C_id=@customerid");
+                populateCustomerInfoCmd.Parameters.AddWithValue("@customerid", selectedCustomer.C_id);
+                populateCustomerInfoCmd.Connection = Shared.ramdbConnection;
+                Shared.ramdbConnection.Open();
+                SqlDataReader CustomerInfoReader = populateCustomerInfoCmd.ExecuteReader();
+                while (CustomerInfoReader.Read())
+                {
+                    if (selectedCustomer.C_id == Convert.ToInt32(CustomerInfoReader["C_id"]))
+                    {
+                        Address = CustomerInfoReader["Add1"].ToString() + ", " + CustomerInfoReader["Add2"].ToString();
+                        CityStateZip = CustomerInfoReader["City"].ToString() + ", " +
+                                                            CustomerInfoReader["State"].ToString() + ", " +
+                                                            CustomerInfoReader["Zip"].ToString();
+                        Company = CustomerInfoReader["Company"].ToString();
+                        Phone1 = String.Format("{0:(###) ###-####}", Convert.ToInt64(CustomerInfoReader["Phone1"]));
+                        if (!CustomerInfoReader["Phone2"].ToString().Equals("")) { Phone2 = String.Format("{0:(###) ###-####}", Convert.ToInt64(CustomerInfoReader["Phone2"])); }
+                        if (Phone2 == null) { PhonesFull = Phone1; }
+                        else { PhonesFull = Phone1 + " / " + Phone2; }
+                        Email = CustomerInfoReader["Email"].ToString();
+                        customerAddressLabel.Content = Address;
+                        customerCityStateZipLabel.Content = CityStateZip;
+                        //MessageBox.Show(Email + ", " + PhonesFull);
+                    }
+                }
+                Shared.ramdbConnection.Close();
+            }
+        }
+        void ClearTextBoxes(DependencyObject obj)
+        {
+            TextBox tb = obj as TextBox;
+            if (tb != null)
+                tb.Text = "";
+
+            for (int i = 0; i < VisualTreeHelper.GetChildrenCount(obj as DependencyObject); i++)
+                ClearTextBoxes(VisualTreeHelper.GetChild(obj, i));
+        }
+        private void ClearBtn_Click(object sender, RoutedEventArgs e)
+        {
+            ClearTextBoxes(this);
+            eta.Value = 0;
+            acadaptorChbx.IsChecked = false;
+            adapterbrandTxtbx.IsEnabled = false;
+            customerAddressLabel.Content = "Address";
+            customerCityStateZipLabel.Content = "City, State, Zip";
+            ticketNoLbl.Content = "N/A";
+            dateCreatedlbl.Content = "";
+            saveBtn.IsEnabled = true;
+            printBtn.IsEnabled = false;
+            ClearBtn.IsEnabled = false;
+        }
+
+        private void LayoutRoot_PreviewKeyDown(object sender, KeyEventArgs e)
+        {
+            ClearBtn.IsEnabled = true;
+        }
+
+        private void LayoutRoot_PreviewMouseDown(object sender, MouseButtonEventArgs e)
+        {
+            ClearBtn.IsEnabled = true;
+        }
+    }
+}

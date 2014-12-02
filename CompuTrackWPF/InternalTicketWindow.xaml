@@ -1,0 +1,48 @@
+﻿<Window xmlns:local="clr-namespace:CompuTrackWPF"
+	    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+	    xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:Telerik_Windows_Controls_MaskedTextBox="clr-namespace:Telerik.Windows.Controls.MaskedTextBox;assembly=Telerik.Windows.Controls.Input" xmlns:Telerik_Windows_Controls_Chromes="clr-namespace:Telerik.Windows.Controls.Chromes;assembly=Telerik.Windows.Controls" mc:Ignorable="d"
+        x:Class="CompuTrackWPF.InternalTicketWindow"
+        Title="InternalTicketWindow" Height="400" Width="501" Background="#FFFFE773"
+        WindowStyle="None" ResizeMode="NoResize" BorderBrush="black"
+        WindowStartupLocation="CenterOwner" ShowInTaskbar="False" BorderThickness="1">
+    <Window.Resources>
+        <local:TicketStatusCollection x:Key="StatusList" />
+        <local:InternalTicketCommLogCollection x:Key="CommLogList" />
+        <local:InternalTicketNotesCollection x:Key="NotesList" />
+    </Window.Resources>
+    <Grid x:Name="LayoutRoot">
+        <Canvas Margin="10,0,8,0">
+        	<telerik:RadButton x:Name="SaveBtn" Content="Save" Height="22.61" TabIndex="12" Canvas.Left="305.705" Canvas.Top="362.39" Width="80.144" Click="saveBtn_Click" />
+        	<telerik:RadButton x:Name="CancelBtn" Content="Cancel" Height="22.61" Click="CancelBtn_Click" Width="80.144" TabIndex="13" RenderTransformOrigin="0.576,0.469" Canvas.Left="389.849" Canvas.Top="362.39" />
+        	<GroupBox x:Name="basicHardwareGbx" Header="Hardware Diagnostics" Height="132.144" Width="226.306" Canvas.Left="8" Canvas.Top="61.689">
+        		<Canvas Margin="0,2,0,-2">
+        			<Label x:Name="hardDriveLbl" Content="Hard Drive" Width="74.249" Canvas.Top="1" Canvas.Left="2"/>
+        			<Label x:Name="MemoryLbl" Content="Memory" Width="60.585" Canvas.Left="2" Canvas.Top="29.945"/>
+        			<TextBox x:Name="badHardwareTextBox" TextWrapping="Wrap" Canvas.Left="4" Canvas.Top="81.224" Width="202.306" TabIndex="6" MaxLength="50"/>
+        			<Label Content="Other malfunctioning hardware:" Canvas.Top="56.264"/>
+        			<RadioButton x:Name="hddPassRadio" Content="Pass" Canvas.Left="71.249" Canvas.Top="6" TabIndex="2" GroupName="HardDrive"/>
+        			<RadioButton x:Name="hddFailRadio" Content="Fail" Canvas.Left="121.249" Canvas.Top="6" TabIndex="2" GroupName="HardDrive"/>
+        			<RadioButton x:Name="memoryPassRadio" Content="Pass" Canvas.Left="71.249" Canvas.Top="36" TabIndex="2" GroupName="Memory"/>
+        			<RadioButton x:Name="memoryFailRadio" Content="Fail" Canvas.Left="121.249" Canvas.Top="36" TabIndex="2" GroupName="Memory"/>
+        		</Canvas>
+        	</GroupBox>
+        	<TextBox x:Name="workDoneTxBx" RenderTransformOrigin="1.25,0.339" TextWrapping="Wrap" TabIndex="7" Width="225.307" Height="116.808" Canvas.Left="8.999" Canvas.Top="222.72" MaxLength="500" />
+        	<Label x:Name="workDoneLbl" Content="Work Summary" Canvas.Left="7.999" Canvas.Top="195.76"/>
+        	<Label Content="Ticket No:" Height="26.728" Width="61.627" HorizontalContentAlignment="Right" RenderTransformOrigin="0.944,0.561" Canvas.Left="367.113" Canvas.Top="-0.768" />
+        	<Label x:Name="ticketNoLbl" Content="N/A" Width="51.921" HorizontalContentAlignment="Right" RenderTransformOrigin="0.172,0.499" Canvas.Left="414.856"/>
+        	<TextBox x:Name="NoteTxBx" RenderTransformOrigin="1.25,0.339" TextWrapping="Wrap" TabIndex="9" Height="100.401" Canvas.Left="264.556" Canvas.Top="93.432" Width="202.307" MaxLength="350" />
+        	<TextBox x:Name="CommLogTxBx" RenderTransformOrigin="1.25,0.339" TextWrapping="Wrap" TabIndex="11" Height="91.808" Canvas.Left="264.556" Canvas.Top="247.72" Width="202.307" MaxLength="350" />
+        	<Label x:Name="NoteLbl" Content="Notes" Canvas.Left="264.556" Canvas.Top="39.472"/>
+        	<Label x:Name="commLogLbl" Content="Communication Log" RenderTransformOrigin="5.216,1.796" HorizontalAlignment="Left" Canvas.Left="264.556" Canvas.Top="195.76"/>
+        	<telerik:RadButton x:Name="saveNoteBtn" Content="Save" Width="41.093" TabIndex="17" Height="22.61" Canvas.Left="425.77" Canvas.Top="44.822" Visibility="Hidden" Click="saveNoteBtn_Click" />
+        	<telerik:RadButton x:Name="saveLogBtn" Content="Save" Width="41.007" TabIndex="17" Height="22.61" Canvas.Left="425.77" Canvas.Top="197.833" Visibility="Hidden" Click="saveLogBtn_Click" />
+        	<telerik:RadComboBox x:Name="statusComboBox" ItemsSource="{Binding Source={StaticResource StatusList}}" DisplayMemberPath="statusString" IsReadOnly="True" Width="225.307" SelectionChanged="statusComboBox_SelectionChanged" Canvas.Left="8.999" Canvas.Top="37.689" TabIndex="1" />
+        	<telerik:RadComboBox x:Name="NotesComboBox" ItemsSource="{Binding Source={StaticResource NotesList}}" DisplayMemberPath="visibleString" IsReadOnly="True" EmptyText="Select a note..." Canvas.Left="264.556" Canvas.Top="69.432" Width="202.307" TabIndex="8" SelectionChanged="noteSelectionChange" />
+        	<telerik:RadComboBox x:Name="LogComboBox" ItemsSource="{Binding Source={StaticResource CommLogList}}" DisplayMemberPath="visibleString" IsReadOnly="True" EmptyText="Select an entry..." Canvas.Left="264.556" Canvas.Top="221.72" Width="202.307" TabIndex="10" SelectionChanged="commLogSelectionChange" />
+        	<Label x:Name="lblMessage" Content="" Width="273.48" Canvas.Left="12.173" Canvas.Top="344.04"/>
+        	<Label x:Name="titleLabel" Content="Internal Ticket" FontWeight="Bold" FontSize="21.333" Canvas.Left="8.999"/>
+        </Canvas>
+    </Grid>
+</Window>

@@ -1,0 +1,26 @@
+﻿<Window
+	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation" xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" mc:Ignorable="d"
+	x:Class="CompuTrackWPF.FrontDeskWindow"
+	Icon="/CompuTrackWPF;component/icon.png"
+	Title="FrontDeskWindow"
+	Width="200" Height="265" Background="#FFFFE773"
+	WindowStyle="None" ResizeMode="NoResize" BorderBrush="black"
+	WindowStartupLocation="CenterOwner" BorderThickness="1" MouseLeftButtonDown="mouseLeftDown">
+
+	<Grid x:Name="LayoutRoot">
+		<telerik:RadButton x:Name="newCustomerBtn" Content="New Customer" VerticalAlignment="Top" Margin="53,60,54.236,0" Click="newCustomerBtn_Click" TabIndex="1" />
+		<telerik:RadButton x:Name="newTicketBtn" Content="New Ticket" VerticalAlignment="Top" Margin="53,93.276,54.236,0" Click="newTicketBtn_Click" TabIndex="2" />
+		<Image Height="34.941" Source="trans-logo.png" Stretch="Fill" VerticalAlignment="Top"/>
+		<telerik:RadButton x:Name="fullViewBtn" Content="Full View Mode" Margin="53,125.276,54.236,118.447" d:LayoutOverrides="Height" Click="fullViewBtn_Click" TabIndex="3" />
+		<Canvas x:Name="passwordCanvas" Height="66" VerticalAlignment="Bottom" Margin="0,0,0,24" Visibility="Hidden">
+			<Label Content="Enter current user password:" Width="198" HorizontalAlignment="Center" HorizontalContentAlignment="Center"/>
+			<telerik:RadButton x:Name="passwordSubmitBtn" Content="Submit" Canvas.Left="150.226" Canvas.Top="27.276" Click="passwordSubmitBtn_Click" />
+			<PasswordBox Canvas.Left="8" Canvas.Top="27.276" Width="138.226" Name="passwordBox" KeyDown="OnEnterKey" MaxLength="15" />
+			<Label x:Name="messageLabel" Content="" Canvas.Top="45.926" Width="198" HorizontalContentAlignment="Center" HorizontalAlignment="Center"/>
+		</Canvas>
+		<Label x:Name="userLabel" Content="Logged in as: " HorizontalAlignment="Right" VerticalAlignment="Bottom" HorizontalContentAlignment="Right"/>
+		<telerik:RadButton x:Name="closeBtn" Content="Close" Margin="53,0,54.236,88.447" Click="closeBtn_Click" VerticalAlignment="Bottom" TabIndex="4" />
+	</Grid>
+</Window>

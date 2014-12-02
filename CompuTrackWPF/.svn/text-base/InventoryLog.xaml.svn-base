@@ -1,0 +1,20 @@
+﻿<Window x:Class="CompuTrackWPF.InventoryLog"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:c="clr-namespace:CompuTrackWPF" WindowStartupLocation="CenterOwner"
+        Title="InventoryLog" Height="285" Width="450" Background="#FFFFE773" WindowStyle="None" ShowInTaskbar="False" BorderBrush="Black" BorderThickness="1" ResizeMode="NoResize" xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation" Name="inventoryLog">
+    <Window.Resources>
+        <c:InventoryLogData x:Key="LogList"></c:InventoryLogData>
+    </Window.Resources>
+    <Grid>
+        <Label Content="Inventory Log" FontSize="21.333" FontWeight="Bold" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="13,0,0,0" />
+        <ListView Height="216" HorizontalAlignment="Left" Margin="13,47,0,0" Name="inventoryLogListView" VerticalAlignment="Top" Width="160" SelectionMode="Single" ItemsSource="{Binding Source={StaticResource LogList}}" DisplayMemberPath="Date" SelectionChanged="inventoryLogListView_SelectionChanged" />
+        <telerik:RadButton Content="Close" Height="23" HorizontalAlignment="Right" Margin="0,240,8,0" Name="closeButton" TabIndex="11" VerticalAlignment="Top" Width="75" Click="closeButton_Click" />
+        <TextBox Height="111" HorizontalAlignment="Left" Margin="190,77,0,0" Name="entryBox" VerticalAlignment="Top" Width="224" BorderBrush="Black" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto" IsReadOnly="True" TextWrapping="NoWrap" FontSize="12" />
+        <TextBox Height="23" HorizontalAlignment="Left" Margin="190,31,0,0" Name="userBox" VerticalAlignment="Top" Width="114" BorderBrush="Black" IsReadOnly="True" />
+        <TextBox Height="51" HorizontalAlignment="Left" Margin="190,212,0,0" Name="reasonBox" VerticalAlignment="Top" Width="150" BorderBrush="Black" HorizontalScrollBarVisibility="Hidden" IsReadOnly="True" TextWrapping="Wrap" VerticalScrollBarVisibility="Auto" />
+        <Label Content="Details:" Height="28" HorizontalAlignment="Left" Margin="190,57,0,0" Name="label2" VerticalAlignment="Top" Width="54" />
+        <Label Content="Reason:" Height="28" HorizontalAlignment="Left" Margin="190,191,0,0" Name="label3" VerticalAlignment="Top" Width="54" />
+        <Label Content="User:" Height="28" HorizontalAlignment="Left" Margin="190,11,0,0" Name="label4" VerticalAlignment="Top" Width="54" />
+    </Grid>
+</Window>

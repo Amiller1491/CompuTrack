@@ -1,0 +1,413 @@
+K 25
+svn:wc:ra_dav:version-url
+V 57
+/svn/285-spring11-2/!svn/ver/215/CompuTrack/CompuTrackWPF
+END
+TicketWindow.xaml.cs
+K 25
+svn:wc:ra_dav:version-url
+V 78
+/svn/285-spring11-2/!svn/ver/196/CompuTrack/CompuTrackWPF/TicketWindow.xaml.cs
+END
+App.xaml.cs
+K 25
+svn:wc:ra_dav:version-url
+V 68
+/svn/285-spring11-2/!svn/ver/16/CompuTrack/CompuTrackWPF/App.xaml.cs
+END
+CompuTrackWPF.csproj
+K 25
+svn:wc:ra_dav:version-url
+V 78
+/svn/285-spring11-2/!svn/ver/214/CompuTrack/CompuTrackWPF/CompuTrackWPF.csproj
+END
+ramdbDataSet.xsc
+K 25
+svn:wc:ra_dav:version-url
+V 73
+/svn/285-spring11-2/!svn/ver/16/CompuTrack/CompuTrackWPF/ramdbDataSet.xsc
+END
+ramdbDataSet.xsd
+K 25
+svn:wc:ra_dav:version-url
+V 73
+/svn/285-spring11-2/!svn/ver/16/CompuTrack/CompuTrackWPF/ramdbDataSet.xsd
+END
+CustomerWindow.xaml
+K 25
+svn:wc:ra_dav:version-url
+V 77
+/svn/285-spring11-2/!svn/ver/197/CompuTrack/CompuTrackWPF/CustomerWindow.xaml
+END
+PreferencesWindow.xaml
+K 25
+svn:wc:ra_dav:version-url
+V 80
+/svn/285-spring11-2/!svn/ver/197/CompuTrack/CompuTrackWPF/PreferencesWindow.xaml
+END
+ItemCategoryData.cs
+K 25
+svn:wc:ra_dav:version-url
+V 77
+/svn/285-spring11-2/!svn/ver/133/CompuTrack/CompuTrackWPF/ItemCategoryData.cs
+END
+FrontDeskWindow.xaml.cs
+K 25
+svn:wc:ra_dav:version-url
+V 81
+/svn/285-spring11-2/!svn/ver/152/CompuTrack/CompuTrackWPF/FrontDeskWindow.xaml.cs
+END
+InventoryMain.xaml
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/svn/285-spring11-2/!svn/ver/211/CompuTrack/CompuTrackWPF/InventoryMain.xaml
+END
+InventoryLog.xaml.cs
+K 25
+svn:wc:ra_dav:version-url
+V 78
+/svn/285-spring11-2/!svn/ver/200/CompuTrack/CompuTrackWPF/InventoryLog.xaml.cs
+END
+InventoryMain.xaml.cs
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/svn/285-spring11-2/!svn/ver/213/CompuTrack/CompuTrackWPF/InventoryMain.xaml.cs
+END
+ramdbDataSet.xss
+K 25
+svn:wc:ra_dav:version-url
+V 73
+/svn/285-spring11-2/!svn/ver/16/CompuTrack/CompuTrackWPF/ramdbDataSet.xss
+END
+DeleteItemWindow.xaml
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/svn/285-spring11-2/!svn/ver/208/CompuTrack/CompuTrackWPF/DeleteItemWindow.xaml
+END
+SortArrowsDictionary.xaml
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/svn/285-spring11-2/!svn/ver/206/CompuTrack/CompuTrackWPF/SortArrowsDictionary.xaml
+END
+EmailCreator.cs
+K 25
+svn:wc:ra_dav:version-url
+V 73
+/svn/285-spring11-2/!svn/ver/214/CompuTrack/CompuTrackWPF/EmailCreator.cs
+END
+TicketWindow.xaml
+K 25
+svn:wc:ra_dav:version-url
+V 75
+/svn/285-spring11-2/!svn/ver/189/CompuTrack/CompuTrackWPF/TicketWindow.xaml
+END
+icon.png
+K 25
+svn:wc:ra_dav:version-url
+V 65
+/svn/285-spring11-2/!svn/ver/66/CompuTrack/CompuTrackWPF/icon.png
+END
+MainWindow.xaml.cs
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/svn/285-spring11-2/!svn/ver/212/CompuTrack/CompuTrackWPF/MainWindow.xaml.cs
+END
+ramlogo.png
+K 25
+svn:wc:ra_dav:version-url
+V 68
+/svn/285-spring11-2/!svn/ver/16/CompuTrack/CompuTrackWPF/ramlogo.png
+END
+FrontDeskWindow.xaml
+K 25
+svn:wc:ra_dav:version-url
+V 78
+/svn/285-spring11-2/!svn/ver/197/CompuTrack/CompuTrackWPF/FrontDeskWindow.xaml
+END
+CompuTrack.png
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/svn/285-spring11-2/!svn/ver/26/CompuTrack/CompuTrackWPF/CompuTrack.png
+END
+DeleteCategoryWindow.xaml.cs
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/svn/285-spring11-2/!svn/ver/208/CompuTrack/CompuTrackWPF/DeleteCategoryWindow.xaml.cs
+END
+EmailConfirmationWindow.xaml.cs
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/svn/285-spring11-2/!svn/ver/215/CompuTrack/CompuTrackWPF/EmailConfirmationWindow.xaml.cs
+END
+PreferencesWindow.xaml.cs
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/svn/285-spring11-2/!svn/ver/214/CompuTrack/CompuTrackWPF/PreferencesWindow.xaml.cs
+END
+CustomerWindow.xaml.cs
+K 25
+svn:wc:ra_dav:version-url
+V 80
+/svn/285-spring11-2/!svn/ver/212/CompuTrack/CompuTrackWPF/CustomerWindow.xaml.cs
+END
+ramdbDataSet.Designer.cs
+K 25
+svn:wc:ra_dav:version-url
+V 81
+/svn/285-spring11-2/!svn/ver/16/CompuTrack/CompuTrackWPF/ramdbDataSet.Designer.cs
+END
+TicketListCollection.cs
+K 25
+svn:wc:ra_dav:version-url
+V 81
+/svn/285-spring11-2/!svn/ver/141/CompuTrack/CompuTrackWPF/TicketListCollection.cs
+END
+CustomerData.cs
+K 25
+svn:wc:ra_dav:version-url
+V 73
+/svn/285-spring11-2/!svn/ver/128/CompuTrack/CompuTrackWPF/CustomerData.cs
+END
+InventoryLog.xaml
+K 25
+svn:wc:ra_dav:version-url
+V 75
+/svn/285-spring11-2/!svn/ver/208/CompuTrack/CompuTrackWPF/InventoryLog.xaml
+END
+UserLoginPage.xaml
+K 25
+svn:wc:ra_dav:version-url
+V 75
+/svn/285-spring11-2/!svn/ver/48/CompuTrack/CompuTrackWPF/UserLoginPage.xaml
+END
+Settings.cs
+K 25
+svn:wc:ra_dav:version-url
+V 69
+/svn/285-spring11-2/!svn/ver/147/CompuTrack/CompuTrackWPF/Settings.cs
+END
+SortableListView.cs
+K 25
+svn:wc:ra_dav:version-url
+V 77
+/svn/285-spring11-2/!svn/ver/207/CompuTrack/CompuTrackWPF/SortableListView.cs
+END
+UserWindow.xaml
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/svn/285-spring11-2/!svn/ver/27/CompuTrack/CompuTrackWPF/UserWindow.xaml
+END
+InternalTicketWindow.xaml
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/svn/285-spring11-2/!svn/ver/198/CompuTrack/CompuTrackWPF/InternalTicketWindow.xaml
+END
+CustomerFiltersCollection.cs
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/svn/285-spring11-2/!svn/ver/158/CompuTrack/CompuTrackWPF/CustomerFiltersCollection.cs
+END
+About.xaml
+K 25
+svn:wc:ra_dav:version-url
+V 68
+/svn/285-spring11-2/!svn/ver/210/CompuTrack/CompuTrackWPF/About.xaml
+END
+Shared.cs
+K 25
+svn:wc:ra_dav:version-url
+V 67
+/svn/285-spring11-2/!svn/ver/127/CompuTrack/CompuTrackWPF/Shared.cs
+END
+UserWindow.xaml.cs
+K 25
+svn:wc:ra_dav:version-url
+V 75
+/svn/285-spring11-2/!svn/ver/24/CompuTrack/CompuTrackWPF/UserWindow.xaml.cs
+END
+DeleteItemWindow.xaml.cs
+K 25
+svn:wc:ra_dav:version-url
+V 82
+/svn/285-spring11-2/!svn/ver/208/CompuTrack/CompuTrackWPF/DeleteItemWindow.xaml.cs
+END
+About.xaml.cs
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/svn/285-spring11-2/!svn/ver/192/CompuTrack/CompuTrackWPF/About.xaml.cs
+END
+App.xaml
+K 25
+svn:wc:ra_dav:version-url
+V 65
+/svn/285-spring11-2/!svn/ver/16/CompuTrack/CompuTrackWPF/App.xaml
+END
+app.config
+K 25
+svn:wc:ra_dav:version-url
+V 68
+/svn/285-spring11-2/!svn/ver/185/CompuTrack/CompuTrackWPF/app.config
+END
+NewUserPage.xaml
+K 25
+svn:wc:ra_dav:version-url
+V 73
+/svn/285-spring11-2/!svn/ver/48/CompuTrack/CompuTrackWPF/NewUserPage.xaml
+END
+InventoryData.cs
+K 25
+svn:wc:ra_dav:version-url
+V 74
+/svn/285-spring11-2/!svn/ver/183/CompuTrack/CompuTrackWPF/InventoryData.cs
+END
+DropDownButton.cs
+K 25
+svn:wc:ra_dav:version-url
+V 74
+/svn/285-spring11-2/!svn/ver/21/CompuTrack/CompuTrackWPF/DropDownButton.cs
+END
+InventoryLogData.cs
+K 25
+svn:wc:ra_dav:version-url
+V 77
+/svn/285-spring11-2/!svn/ver/191/CompuTrack/CompuTrackWPF/InventoryLogData.cs
+END
+TicketStatusCollection.cs
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/svn/285-spring11-2/!svn/ver/151/CompuTrack/CompuTrackWPF/TicketStatusCollection.cs
+END
+ClickSelectTextBox.cs
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/svn/285-spring11-2/!svn/ver/126/CompuTrack/CompuTrackWPF/ClickSelectTextBox.cs
+END
+trans-logo.png
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/svn/285-spring11-2/!svn/ver/53/CompuTrack/CompuTrackWPF/trans-logo.png
+END
+InternalTicketNotesCollection.cs
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/svn/285-spring11-2/!svn/ver/198/CompuTrack/CompuTrackWPF/InternalTicketNotesCollection.cs
+END
+NumberTextBox.cs
+K 25
+svn:wc:ra_dav:version-url
+V 74
+/svn/285-spring11-2/!svn/ver/211/CompuTrack/CompuTrackWPF/NumberTextBox.cs
+END
+UserData.cs
+K 25
+svn:wc:ra_dav:version-url
+V 68
+/svn/285-spring11-2/!svn/ver/82/CompuTrack/CompuTrackWPF/UserData.cs
+END
+MainWindow.xaml
+K 25
+svn:wc:ra_dav:version-url
+V 73
+/svn/285-spring11-2/!svn/ver/207/CompuTrack/CompuTrackWPF/MainWindow.xaml
+END
+User.cs
+K 25
+svn:wc:ra_dav:version-url
+V 64
+/svn/285-spring11-2/!svn/ver/71/CompuTrack/CompuTrackWPF/User.cs
+END
+ItemWindow.xaml
+K 25
+svn:wc:ra_dav:version-url
+V 73
+/svn/285-spring11-2/!svn/ver/211/CompuTrack/CompuTrackWPF/ItemWindow.xaml
+END
+DeleteCategoryWindow.xaml
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/svn/285-spring11-2/!svn/ver/208/CompuTrack/CompuTrackWPF/DeleteCategoryWindow.xaml
+END
+EmailConfirmationWindow.xaml
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/svn/285-spring11-2/!svn/ver/215/CompuTrack/CompuTrackWPF/EmailConfirmationWindow.xaml
+END
+NewUserPage.xaml.cs
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/svn/285-spring11-2/!svn/ver/53/CompuTrack/CompuTrackWPF/NewUserPage.xaml.cs
+END
+ItemWindow.xaml.cs
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/svn/285-spring11-2/!svn/ver/211/CompuTrack/CompuTrackWPF/ItemWindow.xaml.cs
+END
+PDF_Output.cs
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/svn/285-spring11-2/!svn/ver/121/CompuTrack/CompuTrackWPF/PDF_Output.cs
+END
+Simple Styles.xaml
+K 25
+svn:wc:ra_dav:version-url
+V 77
+/svn/285-spring11-2/!svn/ver/59/CompuTrack/CompuTrackWPF/Simple%20Styles.xaml
+END
+ManageUsersWindow.xaml
+K 25
+svn:wc:ra_dav:version-url
+V 80
+/svn/285-spring11-2/!svn/ver/207/CompuTrack/CompuTrackWPF/ManageUsersWindow.xaml
+END
+ManageUsersWindow.xaml.cs
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/svn/285-spring11-2/!svn/ver/207/CompuTrack/CompuTrackWPF/ManageUsersWindow.xaml.cs
+END
+UserLoginPage.xaml.cs
+K 25
+svn:wc:ra_dav:version-url
+V 78
+/svn/285-spring11-2/!svn/ver/69/CompuTrack/CompuTrackWPF/UserLoginPage.xaml.cs
+END
+InternalTicketWindow.xaml.cs
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/svn/285-spring11-2/!svn/ver/198/CompuTrack/CompuTrackWPF/InternalTicketWindow.xaml.cs
+END
+Search-icon.png
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/svn/285-spring11-2/!svn/ver/16/CompuTrack/CompuTrackWPF/Search-icon.png
+END
+InternalTicketCommLogCollection.cs
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/svn/285-spring11-2/!svn/ver/198/CompuTrack/CompuTrackWPF/InternalTicketCommLogCollection.cs
+END

@@ -1,0 +1,4 @@
+4-23-2010
+	1. Inventory can still add a complete blank category, if intentional please let me know. 
+
+	Really the only bug i found lol Great Job!
